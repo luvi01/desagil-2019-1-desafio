@@ -21,11 +21,24 @@ public class Model {
     }
 
     public Player getWinner() {
-        return winner;
+            return winner;
+
+
     }
 
     public void setWinner(Player winner) {
+
         this.winner = winner;
+    }
+
+    public void win(){
+        if (humanPlayer.getRow() == target.getRow() && humanPlayer.getCol() == target.getCol()){
+            setWinner(humanPlayer);
+        }
+        else if (cpuPlayer.getRow() == target.getRow() && cpuPlayer.getCol() == target.getCol()){
+            setWinner(cpuPlayer);
+
+        }
     }
 
     public Board getBoard() {

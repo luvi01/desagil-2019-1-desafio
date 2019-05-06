@@ -51,6 +51,7 @@ public class View extends JPanel {
     // Você nunca deve chamar esse método diretamente. O certo é chamar o método repaint.
     @Override
     public void paintComponent(Graphics g) {
+        model.win();
         Board board = model.getBoard();
 
         for (int i = 0; i < board.getNumRows(); i++) {
@@ -71,6 +72,20 @@ public class View extends JPanel {
 
             g.drawImage(image, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
         });
+
+        if (model.getWinner() != null){
+            if (model.getWinner() == model.getHumanPlayer()){
+                g.setColor(Color.BLACK);
+                g.drawString("HumanPlayer", 10,30);
+
+            }
+            else{
+                g.setColor(Color.BLACK);
+                g.drawString("CpuPlayer",10,30);
+
+            }
+
+        }
 
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
